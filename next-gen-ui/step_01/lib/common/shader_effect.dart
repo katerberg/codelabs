@@ -20,8 +20,6 @@ import 'package:flutter_animate/flutter_animate.dart';
  * effects.dart file.
  */
 
-// TODO: document.
-
 /// An effect that lets you apply an animated fragment shader to a target.
 @immutable
 class ShaderEffect extends Effect<double> {
@@ -109,8 +107,6 @@ typedef ShaderUpdateCallback = EdgeInsets? Function(
     ui.FragmentShader shader, double value, Size size, ui.Image image);
 
 /******************************************************************************/
-// TODO: add this as a dependency instead of copying it in once it is stable:
-// https://github.com/jonahwilliams/flutter_shaders
 
 // Copyright 2013 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
