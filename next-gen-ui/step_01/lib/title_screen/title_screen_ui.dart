@@ -26,7 +26,8 @@ class TitleScreenUi extends StatelessWidget {
 }
 
 class _TitleScreenText extends StatelessWidget {
-  const _TitleScreenText({super.key});
+  const _TitleScreenText();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,15 +36,15 @@ class _TitleScreenText extends StatelessWidget {
       children: [
         const Gap(20),
         Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Transform.translate(
-              offset: Offset(-(TextStyles.h1.letterSpacing! * 0.5), 0),
+              offset: Offset(-(TextStyles.h1.letterSpacing! * .5), 0),
               child: Text('OUTPOST', style: TextStyles.h1),
             ),
-            Image.asset(AssetPaths.titleSelectedLeft, height: 45),
-            Text('57', style: TextStyles.h2),
-            Image.asset(AssetPaths.titleSelectedRight, height: 45),
+            Image.asset(AssetPaths.titleSelectedLeft, height: 65),
+            Text('7', style: TextStyles.h2),
+            Image.asset(AssetPaths.titleSelectedRight, height: 65),
           ],
         ),
         Text('INTO THE UNKNOWN', style: TextStyles.h3),
