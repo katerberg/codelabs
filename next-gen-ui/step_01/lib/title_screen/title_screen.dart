@@ -3,16 +3,28 @@ import '../assets.dart';
 import '../styles.dart';
 import 'title_screen_ui.dart';
 
-class TitleScreen extends StatelessWidget {
+class TitleScreen extends StatefulWidget {
   const TitleScreen({super.key});
 
+  @override
+  State<TitleScreen> createState() => _TitleScreenState();
+}
+
+class _TitleScreenState extends State<TitleScreen> {
   final _finalReceiveLightAmt = 0.7;
+
   final _finalEmitLightAmt = 0.5;
+
+  int _difficulty = 0;
+
+  void _handleDifficultyPressed(int value) {
+    setState(() => _difficulty = value);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final orbColor = AppColors.orbColors[1];
-    final emitColor = AppColors.emitColors[1];
+    final orbColor = AppColors.orbColors[_difficulty];
+    final emitColor = AppColors.emitColors[_difficulty];
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -65,8 +77,12 @@ class TitleScreen extends StatelessWidget {
               color: emitColor,
               lightAmt: _finalEmitLightAmt,
             ),
-            const Positioned.fill(
-              child: TitleScreenUi(),
+            Positioned.fill(
+              child: TitleScreenUi(
+                difficulty: 0,
+                onDifficultyFocused: (newDifficulty) => {},
+                onDifficultyPressed: _handleDifficultyPressed,
+              ),
             ),
           ],
         ),
@@ -88,10 +104,11 @@ class _LitImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hsl = HSLColor.fromColor(color);
+    final lightenedHsl = hsl.withLightness(hsl.lightness * lightAmt).toColor();
 
     return Image.asset(
       imgSrc,
-      color: hsl.withLightness(hsl.lightness * lightAmt).toColor(),
+      color: lightenedHsl,
       colorBlendMode: BlendMode.modulate,
     );
   }
